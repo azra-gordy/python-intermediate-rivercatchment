@@ -2,12 +2,13 @@
 
 The Model layer is responsible for the 'business logic' part of the software.
 
-Catchment data is held in a Pandas dataframe (2D array) where each column contains
-data for a single measurement site, and each row represents a single measurement
-time across all sites.
+Catchment data is held in a Pandas dataframe (2D array) where each column 
+contains data for a single measurement site, and each row represents a single 
+measurement time across all sites.
 """
 
 import pandas as pd
+
 
 def read_variable_from_csv(filename):
     """Reads a named variable from a CSV file, and returns a
@@ -34,10 +35,12 @@ def read_variable_from_csv(filename):
 
     return newdataset
 
+
 def daily_total(data):
     """Calculate the daily total of a 2D data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).sum()
+
 
 def daily_mean(data):
     """Calculate the daily mean of a 2D data array.
@@ -55,4 +58,3 @@ def daily_min(data):
     """Calculate the daily min of a 2D data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
-
