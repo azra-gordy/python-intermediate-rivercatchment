@@ -8,6 +8,7 @@ measurement time across all sites.
 """
 
 import pandas as pd
+import numpy as np
 
 
 def read_variable_from_csv(filename):
@@ -74,3 +75,9 @@ def daily_min(data):
     :returns: A 2D Pandas data frame with minimum values of the measurements for each day.
     """
     return data.groupby(data.index.date).min()
+
+
+def data_normalise(data):
+    """Normalise any given 2D data array"""
+    normal_max = np.array(np.max(data, axis=0))
+    return data / normal_max[np.newaxis, :]
