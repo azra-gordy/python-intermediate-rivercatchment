@@ -16,6 +16,7 @@ def analyse_data(data_dir):
     of these means.
     """
     data_file_paths = glob.glob(os.path.join(data_dir, 'rain_data_2015*.csv'))
+    print(len(data_file_paths))
     if len(data_file_paths) == 0:
         raise ValueError('No CSV files found in the data directory')
     data = map(models.read_variable_from_csv, data_file_paths)
@@ -27,8 +28,10 @@ def analyse_data(data_dir):
     
     daily_standard_deviation = pd.concat(daily_std_list)
 
-    graph_data = {
-        'daily standard deviation': daily_standard_deviation
-    }
+    return daily_standard_deviation
 
-    views.visualize(graph_data)
+    # graph_data = {
+    #     'daily standard deviation': daily_standard_deviation
+    # }
+
+    # views.visualize(graph_data)
