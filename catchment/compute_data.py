@@ -26,9 +26,8 @@ def analyse_data(data_dir):
     return daily_standard_deviation
 
 def compute_standard_deviation_by_day(data):
-    daily_std_list = []
-    for dataset in data:
-        daily_std = dataset.groupby(dataset.index.date).std()
-        daily_std_list.append(daily_std)
+    daily_std_list = map(models.daily_std, data)
     daily_standard_deviation = pd.concat(daily_std_list)
     return daily_standard_deviation
+
+
