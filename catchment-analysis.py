@@ -19,7 +19,16 @@ def main(args):
         InFiles = [args.infiles]
     
     if args.full_data_analysis:
-        daily_standard_deviation = compute_data.analyse_data(os.path.dirname(InFiles[0]))
+        _, extension = os.path.splitext(InFiles[0])
+        if extension == '.json':
+            data_source_json = compute_data.JSONDataSourceDataSource(os.path.dirname(InFiles[0]))
+        elif extension == '.csv':
+            data_source_csv = compute_data.CSVDataSource(os.path.dirname(InFiles[0]))
+        else:
+            raise ValueError(f'Unsupported file format: {extension}')
+        
+        daily_standard_deviation = compute_data.analyse_data(data_source)
+        #daily_standard_deviation = compute_data.analyse_data(os.path.dirname(InFiles[0]))
         graph_data = {
             'daily standard deviation': daily_standard_deviation
         }
