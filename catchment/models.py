@@ -60,6 +60,11 @@ def read_variable_from_json(filename):
 
     return newdataset
 
+def daily_std(data):
+    """Calculare the daily std of a 2d data array.
+    Index must be np.datetime64 compatible format."""
+    return data.groupby(data.index.date).std()
+
 def daily_total(data):
     """Calculate the daily total of a 2d data array.
     Index must be np.datetime64 compatible format."""
