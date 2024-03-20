@@ -21,6 +21,7 @@ def analyse_data(data_dir):
     return daily_standard_deviation
 
 def load_catchment_data(data_dir):
+    """Load in catchment data from data_dir"""
     data_file_paths = glob.glob(os.path.join(data_dir, 'rain_data_2015*.csv'))
     print(len(data_file_paths))
     if len(data_file_paths) == 0:
@@ -29,8 +30,7 @@ def load_catchment_data(data_dir):
     return data
 
 def compute_standard_deviation_by_day(data):
+    """Calculate standard deviation by day"""
     daily_std_list = map(models.daily_std, data)
     daily_standard_deviation = pd.concat(daily_std_list)
     return daily_standard_deviation
-
-
