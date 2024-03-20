@@ -8,6 +8,7 @@ import pandas as pd
 from catchment import models, views
 
 
+
 def analyse_data(data_dir):
     """Calculate the standard deviation by day between datasets.
 
@@ -26,9 +27,10 @@ def analyse_data(data_dir):
         daily_std_list.append(daily_std)
     
     daily_standard_deviation = pd.concat(daily_std_list)
+    return daily_standard_deviation
 
-    graph_data = {
-        'daily standard deviation': daily_standard_deviation
-    }
+    #graph_data = {
+    #    'daily standard deviation': daily_standard_deviation
+    #}
 
-    views.visualize(graph_data)
+    #views.visualize(graph_data)
