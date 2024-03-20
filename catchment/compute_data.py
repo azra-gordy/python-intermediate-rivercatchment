@@ -54,8 +54,11 @@ def analyse_data(data_source):
     works out the mean for each day, and then graphs the standard deviation
     of these means.
     """
-    data = data_source.load_catchment_data()
-    return compute_standard_deviation_by_day(data)
+    data_file_paths = glob.glob(os.path.join(data_dir, 'rain_data_2015*.csv'))
+    print(len(data_file_paths))
+    if len(data_file_paths) == 0:
+        raise ValueError('No CSV files found in the data directory')
+    data = map(models.read_variable_from_csv, data_file_paths)
 
     # graph_data = {
     #     'standard deviation by day': daily_standard_deviation,
@@ -82,4 +85,10 @@ def analyse_data(data_source):
     
 #     daily_standard_deviation = pd.concat(daily_std_list)
 
-#     return daily_standard_deviation
+    return daily_standard_deviation
+
+    # graph_data = {
+    #     'daily standard deviation': daily_standard_deviation
+    # }
+
+    # views.visualize(graph_data)
