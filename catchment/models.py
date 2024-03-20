@@ -131,8 +131,8 @@ def daily_min(data):
     """
     return data.groupby(data.index.date).min()
 
+def daily_std(data):
+    """Calculate the daily std of a 2d data array.
+    Index must be np.datetime64 compatible format."""
+    return data.groupby(data.index.date).std()
 
-def data_normalise(data):
-    """Normalise any given 2D data array"""
-    normal_max = np.array(np.max(data, axis=0))
-    return data / normal_max[np.newaxis, :]
