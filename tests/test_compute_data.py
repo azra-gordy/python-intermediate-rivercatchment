@@ -3,9 +3,10 @@ import numpy.testing as npt
 from pathlib import Path
 
 def test_analyse_data():
-    from catchment.compute_data import analyse_data
+    from catchment.compute_data import analyse_data, CSVDataSource
     path = Path.cwd() / "data"
-    result = analyse_data(path)
+    data_source = CSVDataSource(path)
+    result = analyse_data(data_source)
     expected_output = [ [0.        , 0.18801829],
                        [0.10978448, 0.43107373],
                        [0.06066156, 0.0699624 ],
@@ -37,5 +38,4 @@ def test_analyse_data():
                        [0.13449059, 0.        ],
                        [0.18285024, 0.19707288],
                        [0.19176008, 0.13915472]]
-
     npt.assert_array_almost_equal(result, expected_output)

@@ -11,7 +11,8 @@ def visualize(data_dict):
     """
 
     num_plots = len(data_dict)
-    fig = plt.figure(figsize=((3 * num_plots) + 1, 3.0))
+    #fig = plt.figure(figsize=((3 * num_plots) + 1, 3.0))
+    fig = plt.figure(figsize=((3 * num_plots) + 1, 10.0))
 
     for i, (name, data) in enumerate(data_dict.items()):
         axes = fig.add_subplot(1, num_plots, i + 1)
