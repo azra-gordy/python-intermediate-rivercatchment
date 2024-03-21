@@ -2,10 +2,9 @@
 
 from matplotlib import pyplot as plt
 import numpy as np
-import os 
 
 
-def visualize(data_dict,a=None, b=None):
+def visualize(data_dict):
     """Display plots of basic statistical properties of the given data.
 
     :param data_dict: Dictionary of name -> data to plot
@@ -21,12 +20,7 @@ def visualize(data_dict,a=None, b=None):
         axes.set_ylabel(name)
         axes.plot(data)
         axes.legend(data.columns)
-        axes.set_xticklabels(data.index, rotation=90)
-        axes.set_title(b)
-        a = os.path.basename(a)[:-4]
-        fname = f'{a}_{b}.png'
 
     fig.tight_layout()
-    plt.savefig(fname)
 
     plt.show()
