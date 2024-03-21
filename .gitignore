@@ -13,6 +13,15 @@
 *.egg-info
 .pytest_cache
 
+<<<<<<< HEAD
 # Virtual environments
 venv/
 .venv/
+=======
+
+__pycache__ 
+.mypy_chache 
+*.
+
+
+>>>>>>> fda-Jo316
