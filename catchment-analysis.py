@@ -40,7 +40,6 @@ def main(args):
         
         views.visualize(view_data)
 
-
 def create_argparse():
     parser = argparse.ArgumentParser(
         description='A basic environmental data management system')
@@ -52,22 +51,12 @@ def create_argparse():
         nargs='+',
         help='Input CSV(s) containing measurement data')
 
-    req_group.add_argument(
-        '-m', '--measurements',
-        help='Name of measurement data series to load',
-    )
-
-    parser.add_argument('--full-data-analysis',
-                        action='store_true',
-                        dest='full_data_analysis')
-
+    parser.add_argument('--full-data-analysis', action='store_true', dest='full_data_analysis')
     return parser
-
 
 if __name__ == "__main__":
 
     parser = create_argparse()
-
     args = parser.parse_args()
 
     main(args)
