@@ -37,6 +37,32 @@ def read_variable_from_csv(filename):
     return newdataset
 
 
+def read_variable_from_xml(filename):
+    """Reads a named variable from an XML file, and returns a
+    pandas dataframe containing that variable. The XML file must contain
+    a column of dates, a column of site ID's, and (one or more) columns
+    of data - only one of which will be read.
+
+    :param filename: Filename of XML to load
+    :return: 2D array of given variable. Index will be dates,
+             Columns will be the individual sites
+    """
+    dataset = pd.read_xml(filename)
+
+    dataset = dataset.rename({'Date': 'OldDate', 'Site_Name': 'Site Name', 'Rainfall_mm': 'Rainfall (mm)'}, axis='columns')
+    dataset['Date'] = [pd.to_datetime(x,dayfirst=True) for x in dataset['OldDate']]
+    dataset = dataset.drop('OldDate', axis='columns')
+
+    newdataset = pd.DataFrame(index=dataset['Date'].unique())
+
+    for site in dataset['Site'].unique():
+        newdataset[site] = dataset[dataset['Site'] == site].set_index('Date')["Rainfall (mm)"]
+
+    newdataset = newdataset.sort_index()
+
+    return newdataset
+
+
 def daily_total(data):
     """Calculate the daily total of a 2D data array.
 
