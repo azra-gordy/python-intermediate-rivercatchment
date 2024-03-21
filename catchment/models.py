@@ -49,7 +49,8 @@ def read_variable_from_xml(filename):
     """
     dataset = pd.read_xml(filename)
 
-    dataset = dataset.rename({'Date': 'OldDate', 'Site_Name': 'Site Name', 'Rainfall_mm': 'Rainfall (mm)'}, axis='columns')
+    dataset = dataset.rename({'Date': 'OldDate', 'Site_Name': 'Site Name', 'Rainfall_mm': 'Rainfall (mm)'},
+                             axis='columns')
     dataset['Date'] = [pd.to_datetime(x,dayfirst=True) for x in dataset['OldDate']]
     dataset = dataset.drop('OldDate', axis='columns')
 
