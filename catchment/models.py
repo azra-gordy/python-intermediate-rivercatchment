@@ -23,6 +23,8 @@ def read_variable_from_csv(filename, measurements='Rainfall (mm)'):
     """
     dataset = pd.read_csv(filename, usecols=['Date', 'Site', measurements])
 
+    dataset = dataset.rename({'Date':'OldDate'}, axis='columns')
+    dataset['Date'] = [pd.to_datetime(x,dayfirst=True, format='mixed') for x in dataset['OldDate']]
     dataset = dataset.rename({'Date': 'OldDate'}, axis='columns')
     dataset['Date'] = [
         pd.to_datetime(x, dayfirst=True, format='mixed') for x in dataset['OldDate']
