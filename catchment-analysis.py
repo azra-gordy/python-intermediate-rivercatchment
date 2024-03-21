@@ -21,6 +21,7 @@ def main(args):
     
     if args.full_data_analysis:
         _, extension = os.path.splitext(InFiles[0])
+<<<<<<< HEAD
 
         if extension == '.csv':
             print("Running CSV")
@@ -28,6 +29,14 @@ def main(args):
         elif extension == '.json':
             print("Running JSON")
             data_source = compute_data.JSONDataSource(os.path.dirname(InFiles[0]))
+=======
+        if extension == '.json':
+            print("Running json")
+            data_source = compute_data.JSONDataSource(os.path.dirname(InFiles[0]))
+        elif extension == '.csv':
+            print("Running csv")
+            data_source = compute_data.CSVDataSource(os.path.dirname(InFiles[0]))
+>>>>>>> fda-Jo316
         else:
             raise ValueError(f'Unsupported file format: {extension}')
 
@@ -41,6 +50,7 @@ def main(args):
 
     for filename in InFiles:
         measurement_data = models.read_variable_from_csv(filename, args.measurements)
+<<<<<<< HEAD
         
         view_data = {'daily sum': models.daily_total(measurement_data), 'daily average': models.daily_mean(measurement_data), 'daily max': models.daily_max(measurement_data), 'daily min': models.daily_min(measurement_data)}
         
@@ -53,11 +63,30 @@ def create_argparse():
 
     req_group = parser.add_argument_group('required arguments')
 
+=======
+ 
+        view_data = {'daily sum': models.daily_total(measurement_data),
+                     'daily average': models.daily_mean(measurement_data),
+                     'daily max': models.daily_max(measurement_data),
+                     'daily min': models.daily_min(measurement_data)}
+
+        views.visualize(view_data, filename, args.measurements)
+
+
+def create_argparse():
+
+    parser = argparse.ArgumentParser(
+        description='A basic environmental data management system')
+    
+    req_group = parser.add_argument_group('required arguments')
+    
+>>>>>>> fda-Jo316
     parser.add_argument(
         'infiles',
         nargs='+',
         help='Input CSV(s) containing measurement data')
 
+<<<<<<< HEAD
     req_group.add_argument(
         '-m', '--measurements',
         help='Name of measurement data series to load',
@@ -67,13 +96,32 @@ def create_argparse():
                         action='store_true',
                         dest='full_data_analysis')
 
+=======
+    parser.add_argument(
+        '--full-data-analysis', 
+        action='store_true', 
+        dest='full_data_analysis')
+    
+    req_group.add_argument(
+        '-m', '--measurements',
+        help='Name of the measurement data series to load',
+    )
+>>>>>>> fda-Jo316
     return parser
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
 
     parser = create_argparse()
 
     args = parser.parse_args()
 
     main(args)
+=======
+    
+    parser = create_argparse()
+    args = parser.parse_args()
+    
+    main(args)
+>>>>>>> fda-Jo316

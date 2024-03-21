@@ -9,12 +9,19 @@ from catchment import models, views
 
 
 class CSVDataSource:
+<<<<<<< HEAD
+=======
+    """
+    Loads all the catchment CSV files within a specified directory.
+    """
+>>>>>>> fda-Jo316
     def __init__(self, dir_path):
         self.dir_path = dir_path
 
     def load_catchment_data(self):
         data_file_paths = glob.glob(os.path.join(self.dir_path, 'rain_data_2015*.csv'))
         if len(data_file_paths) == 0:
+<<<<<<< HEAD
             raise ValueError('No CSV files found in data directory')
         data = map(models.read_variable_from_csv, data_file_paths)
 
@@ -22,12 +29,24 @@ class CSVDataSource:
 
 
 class JSONDataSource:
+=======
+            raise ValueError('No CSV files found in the data directory')
+        data = map(models.read_variable_from_csv, data_file_paths)
+        return list(data)
+
+
+class JSONDataSource:
+    """
+    Loads patient data with catchment values from JSON files within a specified folder.
+    """
+>>>>>>> fda-Jo316
     def __init__(self, dir_path):
         self.dir_path = dir_path
 
     def load_catchment_data(self):
         data_file_paths = glob.glob(os.path.join(self.dir_path, 'rain_data_2015*.json'))
         if len(data_file_paths) == 0:
+<<<<<<< HEAD
             raise ValueError('No JSON files found in data directory')
         data = map(models.read_variable_from_json, data_file_paths)
 
@@ -45,6 +64,11 @@ def compute_standard_deviation_by_day(data_list):
     daily_standard_deviation = pd.concat(daily_std_list)
 
     return daily_standard_deviation
+=======
+            raise ValueError('No JSON files found in the data directory')
+        data = map(models.read_variable_from_json, data_file_paths)
+        return list(data)
+>>>>>>> fda-Jo316
 
 
 def analyse_data(data_source):
@@ -56,6 +80,7 @@ def analyse_data(data_source):
     """
     data = data_source.load_catchment_data()
     return compute_standard_deviation_by_day(data)
+<<<<<<< HEAD
 
     # graph_data = {
     #     'standard deviation by day': daily_standard_deviation,
@@ -83,3 +108,28 @@ def analyse_data(data_source):
 #     daily_standard_deviation = pd.concat(daily_std_list)
 
 #     return daily_standard_deviation
+=======
+
+
+def load_catchment_data(dir_path):
+    data_file_paths = glob.glob(os.path.join(dir_path, 'rain_data_2015*.csv'))
+    if len(data_file_paths) == 0:
+        raise ValueError('No CSV files found in the data directory')
+    data = map(models.read_variable_from_csv, data_file_paths)
+    return list(data)
+
+
+def compute_standard_deviation_by_day(data):
+    # daily_std_list = []
+    # for dataset in data:
+    #     daily_std = dataset.groupby(dataset.index.date).std()
+    #     daily_std_list.append(daily_std)
+    daily_std_list = map(daily_std, data)
+
+    daily_standard_deviation = pd.concat(daily_std_list)
+    return daily_standard_deviation
+
+
+def daily_std(data):
+    return data.groupby(data.index.date).std()
+>>>>>>> fda-Jo316
