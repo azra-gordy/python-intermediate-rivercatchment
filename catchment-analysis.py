@@ -32,9 +32,21 @@ def main(args):
             }
         views.visualize(graph_data)
 
+        if InFiles[0].endswith('.csv') == True:
+            data_source = compute_data.CSVDataSource(os.path.dirname(InFiles[0]))
+        elif InFiles[0].endswith('.json') == True:
+            data_source = compute_data.JSONDataSource(os.path.dirname(InFiles[0]))
+        else:
+            raise ValueError('Unsupported file format: ', InFiles[0].split('.')[-1])
+        daily_standard_deviation = compute_data.analyse_data(data_source)
+        graph_data = {
+                'daily standard deviation': daily_standard_deviation
+            }
+        views.visualize(graph_data)
+
 
     for filename in InFiles:
-        measurement_data = models.read_variable_from_csv(filename, args.measurements, args.measurements)
+        measurement_data = models.read_variable_from_csv(filename, args.measurements)
         
         view_data = {'daily sum': models.daily_total(measurement_data), 'daily average': models.daily_mean(measurement_data), 'daily max': models.daily_max(measurement_data), 'daily min': models.daily_min(measurement_data)}
         
