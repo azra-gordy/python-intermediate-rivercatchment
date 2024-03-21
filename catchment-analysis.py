@@ -45,7 +45,7 @@ def main(args):
                      'daily max': models.daily_max(measurement_data),
                      'daily min': models.daily_min(measurement_data)}
 
-        views.visualize(view_data)
+        views.visualize(view_data, filename, args.measurements)
 
 
 def create_argparse():
