@@ -1,8 +1,8 @@
 """Tests for statistics functions within the Model layer."""
 
+import datetime
 import pandas as pd
 import pandas.testing as pdt
-import datetime
 import pytest
 
 
@@ -11,30 +11,30 @@ import pytest
     [
         (
             pd.DataFrame(
-                data=[ [0.0, 0.0], [0.0, 0.0], [0.0, 0.0] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B' ]
+                data=[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B']
             ),
             pd.DataFrame(
-               data=[ [0.0, 0.0] ],
-               index=[ datetime.date(2000, 1, 1) ],
-               columns=[ 'A', 'B' ]
+               data=[[0.0, 0.0]],
+               index=[datetime.date(2000, 1, 1)],
+               columns=['A', 'B']
             )
         ),
         (
             pd.DataFrame(
-                data=[ [1, 2], [3, 4], [5, 6] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B' ],
+                data=[[1, 2], [3, 4], [5, 6]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B'],
             ),
             pd.DataFrame(
-                data=[ [3.0, 4.0] ],
-                index=[ datetime.date(2000, 1, 1) ],
-                columns=[ 'A', 'B' ]
+                data=[[3.0, 4.0]],
+                index=[datetime.date(2000, 1, 1)],
+                columns=['A', 'B']
             )
         ),
     ])
@@ -49,30 +49,30 @@ def test_daily_mean(test_input, expected_output):
     [
         (
             pd.DataFrame(
-                data=[ [0.0, 0.0, 0.0 ], [0.0, 0.0, 0.0 ], [0.0, 0.0, 0.0 ] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B', 'C' ]
+                data=[ [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B', 'C']
             ),
             pd.DataFrame(
-               data=[ [0.0, 0.0, 0.0] ],
-               index=[ datetime.date(2000, 1, 1) ],
-               columns=[ 'A', 'B', 'C' ]
+               data=[[0.0, 0.0, 0.0] ],
+               index=[datetime.date(2000, 1, 1)],
+               columns=['A', 'B', 'C']
             )
         ),
         (
             pd.DataFrame(
-                data=[ [1, 2], [3, 4], [5, 6] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B' ],
+                data=[[1, 2], [3, 4], [5, 6]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B'],
             ),
             pd.DataFrame(
-                data=[ [5, 6] ],
-                index=[ datetime.date(2000, 1, 1) ],
-                columns=[ 'A', 'B' ]
+                data=[[5, 6]],
+                index=[datetime.date(2000, 1, 1)],
+                columns=['A', 'B']
             )
         ),
     ])
@@ -87,30 +87,30 @@ def test_daily_max(test_input, expected_output):
     [
         (
             pd.DataFrame(
-                data=[ [0.0, 0.0, 0.0 ], [0.0, 0.0, 0.0 ], [0.0, 0.0, 0.0 ] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B', 'C' ]
+                data=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B', 'C']
             ),
             pd.DataFrame(
-               data=[ [0.0, 0.0, 0.0] ],
-               index=[ datetime.date(2000, 1, 1) ],
-               columns=[ 'A', 'B', 'C' ]
+               data=[[0.0, 0.0, 0.0]],
+               index=[datetime.date(2000, 1, 1)],
+               columns=['A', 'B', 'C']
             )
         ),
         (
             pd.DataFrame(
-                data=[ [1, 2], [3, 4], [5, 6] ],
-                index=[ pd.to_datetime('2000-01-01 01:00'),
-                        pd.to_datetime('2000-01-01 02:00'),
-                        pd.to_datetime('2000-01-01 03:00') ],
-                columns=[ 'A', 'B' ],
+                data=[[1, 2], [3, 4], [5, 6]],
+                index=[pd.to_datetime('2000-01-01 01:00'),
+                       pd.to_datetime('2000-01-01 02:00'),
+                       pd.to_datetime('2000-01-01 03:00')],
+                columns=['A', 'B'],
             ),
             pd.DataFrame(
-                data=[ [1, 2] ],
-                index=[ datetime.date(2000, 1, 1) ],
-                columns=[ 'A', 'B' ]
+                data=[[1, 2]],
+                index=[datetime.date(2000, 1, 1)],
+                columns=['A', 'B']
             )
         ),
     ])
@@ -129,7 +129,10 @@ def test_daily_min_python_list():
 
 
 @pytest.mark.parametrize(
-    "test_data, test_index, test_columns, expected_data, expected_index, expected_columns",
+    """
+    test_data, test_index, test_columns, expected_data, 
+    expected_index, expected_columns
+    """,
     [
         (
             [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
@@ -144,10 +147,14 @@ def test_daily_min_python_list():
             ['A', 'B', 'C']
         ),
     ])
-def test_normalise(test_data, test_index, test_columns, expected_data, expected_index, expected_columns):
+def test_normalise(
+    test_data, test_index,
+    test_columns, expected_data,
+    expected_index, expected_columns):
     """Test normalisation works for arrays of one and positive integers.
        Assumption that test accuracy of two decimal places is sufficient."""
     from catchment.models import data_normalise
-    pdt.assert_frame_equal(data_normalise(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
-                           pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns),
-                           atol=1e-2)
+    pdt.assert_frame_equal(
+        data_normalise(
+            pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),  # type: ignore
+            pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns),atol=1e-2)

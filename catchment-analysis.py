@@ -53,11 +53,13 @@ def create_argparse():
 
     req_group = parser.add_argument_group('required arguments')
 
+    # Positional argument "infiles": The input files that contain measurement data
     parser.add_argument(
         'infiles',
         nargs='+',
-        help='Input CSV(s) containing measurement data')
+        help='Input file(s) containing measurement data. Supported formats: CSV, JSON, XML')
 
+    # Required argument "measurements": The measurement data that will be loaded and analysed
     req_group.add_argument(
         '-m', '--measurements',
         help='Name of measurement data series to load',
