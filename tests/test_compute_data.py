@@ -2,20 +2,13 @@ import numpy as np
 import numpy.testing as npt
 from pathlib import Path
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fda-Jo316
 def test_analyse_data():
     from catchment.compute_data import analyse_data, CSVDataSource
     path = Path.cwd() / "data"
     data_source = CSVDataSource(path)
     result = analyse_data(data_source)
-<<<<<<< HEAD
     expected_output = [[0.        , 0.18801829],
-=======
-    expected_output = [ [0.        , 0.18801829],
->>>>>>> fda-Jo316
                        [0.10978448, 0.43107373],
                        [0.06066156, 0.0699624 ],
                        [0.        , 0.02041241],

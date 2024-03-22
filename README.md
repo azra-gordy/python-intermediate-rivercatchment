@@ -1,24 +1,12 @@
-# RiverCatch
-RiverCatch is a data management system written in Python that manages measurement data collected in river catchment surveys and campaigns.
+# Rivercatch
+![Continuous Integration build in GitHub Actions](https://github.com/azra-gordy/python-intermediate-rivercatchment/actions/workflows/main.yml/badge.svg?branch=develop)
 
-# RiverCatch
-RiverCatch is a data management system written in Python that manages measurement data collected in river catchment surveys and campaigns.
-
-## Main features
-Here are some key features of Inflam:
-
-- Provide basic statistical analyses of data
-- Ability to work on measurement data in Comma-Separated Value (CSV) format
-- Generate plots of measurement data
-- Analytical functions and views can be easily extended based on its Model-View-Controller architecture
-
-# RiverCatch
 RiverCatch is a data management system written in Python that manages measurement data collected in river catchment surveys and campaigns.
 
 ## Main features
 Here are some key features of Inflam:
 
-- Provide basic statistical analyses of data
+- Provide basic statistical analysies of data
 - Ability to work on measurement data in Comma-Separated Value (CSV) format
 - Generate plots of measurement data
 - Analytical functions and views can be easily extended based on its Model-View-Controller architecture
@@ -35,7 +23,3 @@ The following optional packages are required to run RiverCatch's unit tests:
 
 - [pytest](https://docs.pytest.org/en/stable/) - RiverCatch's unit tests are written using pytest
 - [pytest-cov](https://pypi.org/project/pytest-cov/) - Adds test coverage stats to unit testing
-
-
-# RiverCatch
-![Continuous Integration build in GitHub Actions](https://github.com/<Jo316/python-intermediate-catchment/workflows/CI/badge.svg?branch=main)

@@ -10,11 +10,8 @@ measurement time across all sites.
 import pandas as pd
 import numpy as np
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> fda-Jo316
 def read_variable_from_csv(filename, measurements='Rainfall (mm)'):
     """Reads a named variable from a CSV file, and returns a
     pandas dataframe containing that variable. The CSV file must contain
@@ -27,18 +24,9 @@ def read_variable_from_csv(filename, measurements='Rainfall (mm)'):
     """
     dataset = pd.read_csv(filename, usecols=['Date', 'Site', measurements])
 
-<<<<<<< HEAD
     dataset = dataset.rename({'Date': 'OldDate'}, axis='columns')
     dataset['Date'] = [
         pd.to_datetime(x, dayfirst=True, format='mixed') for x in dataset['OldDate']
-=======
-    dataset = dataset.rename({'Date':'OldDate'}, axis='columns')
-    dataset['Date'] = [
-        pd.to_datetime(x,
-                       dayfirst=True,
-                       format='mixed') for x in dataset['OldDate']
-        # pd.to_datetime(x,dayfirst=True) for x in dataset['OldDate']
->>>>>>> fda-Jo316
         ]
     dataset = dataset.drop('OldDate', axis='columns')
 
@@ -142,12 +130,9 @@ def daily_min(data):
     :returns: A 2D Pandas data frame with minimum values of the measurements for each day.
     """
     return data.groupby(data.index.date).min()
-<<<<<<< HEAD
 
 
 def data_normalise(data):
     """Normalise any given 2D data array"""
     normal_max = np.array(np.max(data, axis=0))
     return data / normal_max[np.newaxis, :]
-=======
->>>>>>> fda-Jo316
