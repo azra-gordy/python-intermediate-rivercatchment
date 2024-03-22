@@ -66,6 +66,7 @@ def read_variable_from_json(filename):
 
     return newdataset
 
+
 def read_variable_from_xml(filename):
     """Reads a named variable from a XML file, and returns a
     pandas dataframe containing that variable. The XML file must contain
