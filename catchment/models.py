@@ -133,6 +133,9 @@ def daily_min(data):
 
 
 def data_normalise(data):
-    """Normalise any given 2D data array"""
+    """Normalise any given 2D data array
+    :param data: A 2D Pandas data frame with measurement data.
+    :returns : A normalised 2D Pandas data frame with measurement data.
+    """
     normal_max = np.array(np.max(data, axis=0))
     return data / normal_max[np.newaxis, :]
