@@ -66,6 +66,7 @@ def read_variable_from_json(filename):
 
     return newdataset
 
+
 def read_variable_from_xml(filename):
     """Reads a named variable from a XML file, and returns a
     pandas dataframe containing that variable. The XML file must contain
@@ -133,6 +134,10 @@ def daily_min(data):
 
 
 def data_normalise(data):
-    """Normalise any given 2D data array"""
+    """Normalise any given 2D data array
+    
+    :param data: A 2D Pandas data frame with measurement data.
+    :returns : A normalised 2D Pandas data frame with measurement data.
+    """
     normal_max = np.array(np.max(data, axis=0))
     return data / normal_max[np.newaxis, :]
